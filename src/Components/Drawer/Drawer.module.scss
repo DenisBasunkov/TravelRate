@@ -1,0 +1,40 @@
+.User_info {
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    width: 100%;
+}
+
+.btn_menu {
+
+    display: grid;
+    grid-template-columns: 100%;
+    grid-auto-flow: row;
+    text-align: left;
+    gap: 15px;
+
+}
+
+.Button {
+
+    outline: 2px solid #0087D1;
+    outline-offset: -5px;
+    border: 2px solid #0087D1;
+    border-radius: 15px;
+    background-color: transparent;
+    font-weight: 700;
+    font-size: 20px;
+    padding: 10px 15px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transform: scale(1);
+    transition: all .5s;
+
+    &:hover {
+        transform: scale(.99);
+    }
+}

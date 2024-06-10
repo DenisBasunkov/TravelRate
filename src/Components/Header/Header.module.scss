@@ -1,0 +1,62 @@
+.Header_container {
+
+    width: 100%;
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    background-color: rgba($color: #000000, $alpha: .2);
+
+    display: grid;
+    grid-template-columns: .5fr 2fr .2fr;
+    align-items: center;
+
+}
+
+.User_button {
+
+    outline: 1px solid aliceblue;
+    outline-offset: 0;
+    border: none;
+    border-radius: 15px;
+    background-color: transparent;
+    padding: 5px 15px;
+    color: aliceblue;
+    font-size: 20px;
+    font-weight: 700;
+    transition: all .5s;
+
+    &:hover {
+        outline-offset: 4px;
+        background-color: aliceblue;
+        color: black;
+    }
+
+}
+
+.Header_nav_btn {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+
+}
+
+.nav_btn {
+
+    text-decoration: none;
+    color: aliceblue;
+    border: none;
+    font-size: 20px;
+    font-weight: 500;
+    background-color: transparent;
+    transition: all .5s;
+    transform: scale(1);
+
+    &:hover {
+        opacity: .8;
+        transform: scale(.95);
+
+    }
+}

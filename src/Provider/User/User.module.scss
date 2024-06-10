@@ -1,0 +1,153 @@
+.User_fone {
+    background-image: linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)), url("/fone_user.jpg");
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 25vh;
+}
+
+.User_info {
+    width: 90%;
+    margin: 10px auto 0;
+    // background-color: rebeccapurple;
+    display: grid;
+    padding: 25px 5px;
+    grid-template-columns: 1fr 4fr;
+    gap: 5px;
+
+}
+
+.User_card {
+    height: 50vh;
+    background-color: #fff;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 25px;
+    border-radius: 25px;
+    box-shadow: 0px 0px 20px 0px hsla(0, 0%, 0%, .7);
+    padding: 25px 5px;
+}
+
+.User_avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 150px;
+    outline: 5px solid rgb(0, 119, 203);
+    outline-offset: 5px;
+    overflow: hidden;
+    position: relative;
+
+    & img {
+        width: 100%;
+        height: 100%;
+    }
+
+    & div {
+        position: absolute;
+        border: none;
+        background-color: rgba(0, 0, 0, .2);
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 40%;
+        cursor: pointer;
+        color: white;
+        transform: translateY(100%);
+        transition: all .5s;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+
+    }
+
+    &:hover div {
+        transform: translateY(0);
+    }
+}
+
+// button {
+//     border: 2px solid black;
+//     background-color: transparent;
+//     font-weight: 800;
+//     padding: 10px 25px;
+//     border-radius: 15px;
+// }
+
+.Btn_list {
+
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.Button_rate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    width: 60px;
+    font-weight: 800;
+    background-color: transparent;
+    box-shadow: 0px 0px 6px 0px hsla(0, 0%, 0%, .3);
+}
+
+.User_info_container {
+
+    width: 90%;
+
+    margin: 15px auto;
+
+    & button {
+        border: 0;
+    }
+
+}
+
+.User_info_header {
+    background-color: aqua;
+    padding: 10px 15px;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.header_panel {
+
+    margin: 5px auto -15px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    // background-color: #0087D1;
+    // color: #fff;
+
+}
+
+.panel_container {
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.panel_info {
+    padding: 10px 15px;
+    display: "flex";
+    gap: 15px;
+}
+
+.btn_setting {
+
+    border: none;
+    background-color: transparent;
+    color: #0087D1;
+    font-size: 15px;
+
+    &:hover {
+        text-decoration: underline 2px;
+    }
+
+}

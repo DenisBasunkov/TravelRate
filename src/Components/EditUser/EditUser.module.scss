@@ -1,0 +1,58 @@
+.btn_upload {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 100px;
+    border: none;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: aliceblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: rgba(65, 65, 65, .3);
+
+    &:hover {
+        background-color: rgba(65, 65, 65, .6);
+        color: aliceblue;
+    }
+
+    &:active,
+    :focus {
+        background-color: transparent;
+    }
+}
+
+.Img_container {
+    margin: 0 auto;
+    display: flex;
+    width: 100%;
+    // border: 1px solid red;
+    height: 150px;
+    align-items: center;
+    justify-content: center;
+    margin: 15px;
+    gap: 15px;
+    position: relative;
+
+    & img {
+        position: absolute;
+        width: 150px;
+        height: 100%;
+
+        border-radius: 100px;
+        outline: 5px solid blue;
+        outline-offset: 2px;
+        border: 3px dashed gray;
+    }
+
+}
+
+.btn_submite {
+
+    width: 100%;
+    margin: 15px auto;
+    border: 2px solid red;
+}

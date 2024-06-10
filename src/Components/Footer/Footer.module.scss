@@ -1,0 +1,49 @@
+.Footer_container {
+
+    position: static;
+    bottom: 0;
+    background-color: #CAF4FF;
+    width: 100%;
+
+    padding: 25px 50px;
+
+}
+
+.Footer_con_div {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+}
+
+.Footer_con_info {
+    margin-bottom: 25px;
+    display: grid;
+    grid-template-areas: "text space list";
+    grid-template-columns: 2fr 1fr 1fr;
+    color: #3870a1;
+
+}
+
+.button_sochial {
+
+    padding: 10px;
+    border-radius: 25px;
+    // outline: 2px solid #5AB2FF;
+    border: none;
+    outline-offset: 0;
+    background-color: #5AB2FF;
+    color: aliceblue;
+    opacity: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transform: scale(1);
+    transition: .5s all;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}

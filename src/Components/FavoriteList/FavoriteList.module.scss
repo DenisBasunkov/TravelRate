@@ -1,0 +1,21 @@
+.Favorite_container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    gap: 15px;
+    padding: 10px;
+
+}
+
+.Card_container {
+    width: 350px;
+    position: relative;
+}
+
+.button_remove {
+    position: absolute;
+    z-index: 1;
+    top: 15px;
+    left: 15px;
+}

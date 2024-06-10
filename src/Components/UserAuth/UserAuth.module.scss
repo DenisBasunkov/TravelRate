@@ -1,0 +1,114 @@
+.div_container {
+    padding: 25px 15px;
+    background-color: white;
+    border-radius: 15px;
+
+}
+
+.InputBlock {
+
+    align-items: center;
+    height: 30px;
+    border: none;
+    outline: 2px solid #5AB2FF;
+    box-shadow: none;
+    border-radius: 5px;
+    margin: 15px 0px;
+    padding-left: 5px;
+
+    & :active,
+    &:focus,
+    &:hover {
+        border: none;
+        box-shadow: none;
+    }
+}
+
+.InputText {
+    padding: 5px 15px;
+    text-align: left;
+}
+
+.Auth_Button_Active {
+
+    border: none;
+    background-color: #5AB2FF;
+    padding: 10px 15px;
+    border-radius: 15px;
+    width: 100%;
+    font-size: 15px;
+    font-weight: 800;
+    margin-top: 15px;
+    outline: 2px solid white;
+    outline-offset: -5px;
+    color: white;
+
+    transition: all .5s;
+    transform: scale(1);
+
+    &:hover {
+        background-color: #4990cf;
+        transform: scale(1.05);
+    }
+
+}
+
+.Auth_Button_Unactive {
+
+    border: none;
+    background-color: transparent;
+    padding: 10px 15px;
+    width: 100%;
+
+    font-size: 15px;
+    font-weight: 800;
+    margin-top: 15px;
+
+    border-radius: 15px;
+    outline: 2.5px solid #5AB2FF;
+    outline-offset: -5px;
+
+    transition: all .5s;
+    transform: scale(1);
+
+    &:hover {
+        transform: scale(1.05);
+    }
+
+}
+
+
+.SendMail_container {
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 15px;
+
+    & button {
+
+        border: none;
+        color: aliceblue;
+        font-size: 20px;
+        background-color: #4990cf;
+        border-radius: 15px;
+        width: 100%;
+        padding: 5px 10px;
+        transition: all .5s;
+        transform: scale(1);
+
+        &:hover {
+
+            transform: scale(1.05);
+
+        }
+    }
+}
+
+.inputSend {
+
+
+    width: 90%;
+    border-radius: 15px;
+    border: 2px solid #4990cf;
+    padding: 5px 10px;
+
+}
