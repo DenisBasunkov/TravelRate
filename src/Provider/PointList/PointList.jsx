@@ -46,6 +46,7 @@ export const PointList = () => {
     }, []);
 
     useEffect(() => {
+
         filterItemsCombined();
         sessionStorage.setItem("FilterType", JSON.stringify(selectedFilter));
         sessionStorage.setItem("FilterRate", JSON.stringify(selectedFilterRating));
