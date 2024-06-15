@@ -375,3 +375,11 @@ export const Add_point = async (pointData) => {
 
     }
 }
+
+export const get_all_tag = async () => {
+    const { data } = await axios({
+        method: "get",
+        url: "/api/point_type/get_all_tag"
+    })
+    sessionStorage.setItem("all_tag", JSON.stringify(data))
+}

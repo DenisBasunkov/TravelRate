@@ -4,16 +4,18 @@ import "./assets/_module.scss"
 import 'rsuite/dist/rsuite-no-reset.min.css';
 import { App } from './Provider/App/App'
 import { AuthContext, AuthProvider } from './Scripts/AuthContext';
-import { Get_all_category, Get_all_type, MyLatLon, Users } from './Scripts/Global';
+import { Get_all_category, Get_all_type, MyLatLon, Users, get_all_tag } from './Scripts/Global';
 import { CustomProvider, DatePicker } from 'rsuite';
 import { ruRU, enUS, enGB } from 'rsuite/esm/locales';
+import axios from 'axios';
+
 
 window.onload = () => {
 
   MyLatLon()
   Get_all_type()
   Get_all_category()
-
+  get_all_tag()
   Users()
 }
 

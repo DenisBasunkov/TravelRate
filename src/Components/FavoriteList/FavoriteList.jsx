@@ -10,12 +10,10 @@ export const FavoriteList = ({ ID }) => {
 
     const FavoriteList = JSON.parse(sessionStorage.getItem('AllfavoriteList'))
     const Categories = JSON.parse(sessionStorage.getItem('point_category'))
-
     return <div>
 
         <IconButton icon={<SlReload size={"1.5em"} />} onClick={() => location.reload()} />
         <div className={styles.Favorite_container}>
-
             {
                 FavoriteList.length == 0 ? <div style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <h1>У вас нет избранного</h1>
@@ -23,7 +21,8 @@ export const FavoriteList = ({ ID }) => {
                     FavoriteList.map((item) => <>
                         <div className={styles.Card_container}>
                             {/* <IconButton className={styles.button_remove} /> */}
-                            <CardPoint data={item} categories={Categories} />
+
+                            <CardPoint data={item} categories={Categories.find(({ ID }) => ID === item.Categories_Point)} />
                         </div>
                     </>)
             }

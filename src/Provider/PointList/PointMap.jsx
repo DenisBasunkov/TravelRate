@@ -13,6 +13,7 @@ import { Delete_Favorite_point, Put_Favorite_point } from "../../Scripts/Global"
 import { UserAuth } from "../../Components/UserAuth/UserAuth";
 import { RiHeartFill, RiHeartLine } from "react-icons/ri";
 import { Favorite_button } from "../../Components/Favorite_Button/FavoriteButton";
+import { CardPoint } from "../../Components/Card_point/CardPoint";
 
 export const PointMap = ({ data, city }) => {
     const myCoord = JSON.parse(sessionStorage.getItem("MyCoords"))
@@ -29,7 +30,7 @@ export const PointMap = ({ data, city }) => {
     const Categories = JSON.parse(sessionStorage.getItem("point_category")) || []
     const Citys = JSON.parse(sessionStorage.getItem("search_point")) || []
     const city_latlon = data_city.find(({ subject, name }) => subject === Citys.Subject && name === Citys.CityName).coords
-    return <div style={{ width: "100%", height: "600px" }}>
+    return <div style={{ width: "100%", height: "90vh" }}>
         {
             isLoader ? <Placeholder.Graph active style={{ width: "100%", height: "100%" }} /> :
                 <MapContainer
@@ -66,7 +67,10 @@ export const PointMap = ({ data, city }) => {
                                         })}
                                     >
                                         <Popup>
-                                            <PopupMarcer data={item} categories={categories.Name_Categoriess} />
+                                            <div style={{ width: "250px" }}>
+                                                <CardPoint data={item} categories={categories} />
+                                            </div>
+                                            {/* <PopupMarcer data={item} categories={categories.Name_Categoriess} /> */}
                                         </Popup>
                                         <CircleMarker radius={22} key={item.ID} center={JSON.parse(item.Coordinates_point)} pathOptions={{ color: "#1c5777" }}>
 
@@ -77,7 +81,9 @@ export const PointMap = ({ data, city }) => {
                                 </>
                                     : <Polyline key={item.ID} pathOptions={{ color: "red" }} positions={JSON.parse(item.Coordinates_point)} >
                                         <Popup>
-                                            <PopupMarcer data={item} categories={categories.Name_Categoriess} />
+                                            <div style={{ width: "250px" }}>
+                                                <CardPoint data={item} categories={categories} />
+                                            </div>
                                         </Popup>
                                     </Polyline>
 

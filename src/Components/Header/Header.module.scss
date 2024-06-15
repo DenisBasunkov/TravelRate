@@ -5,11 +5,7 @@
     z-index: 100;
     top: 0;
     background-color: rgba($color: #000000, $alpha: .2);
-
-    display: grid;
-    grid-template-columns: .5fr 2fr .2fr;
-    align-items: center;
-
+    padding: 10px 15px;
 }
 
 .User_button {
@@ -59,4 +55,69 @@
         transform: scale(.95);
 
     }
+}
+
+.NavMenu {
+    background-color: transparent;
+
+    & a {
+        background-color: transparent !important;
+        color: #fff;
+        border: none;
+        box-shadow: none !important;
+        transition: all .5s;
+        position: relative;
+    }
+}
+
+.NavBtn {
+
+    background-color: transparent !important;
+    color: #fff;
+    border: none;
+    box-shadow: none !important;
+    transition: all .5s;
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: #fff;
+        transition: all .5s;
+        transform: scale(0);
+    }
+
+    &:hover::after {
+        transform: scale(1);
+    }
+
+    &:hover,
+    &:focus {
+        color: #ffffff65 !important;
+    }
+
+
+}
+
+.NavSign {
+    background-color: transparent !important;
+    color: #fff !important;
+    border: 2px solid #fff !important;
+    outline: 0px solid #fff;
+    outline-offset: 0;
+    box-shadow: none !important;
+    transition: all .5s;
+    padding: 0 25px;
+    border-radius: 15px;
+
+    &:hover {
+        outline: 2px solid #fff;
+        outline-offset: -5px;
+        opacity: .7;
+    }
+
 }

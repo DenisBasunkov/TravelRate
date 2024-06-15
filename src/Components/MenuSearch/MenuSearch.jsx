@@ -28,7 +28,7 @@ export const MenuSearch = ({ set_name }) => {
     return <div className={styles.menu_filter}>
 
 
-        <div>
+        <div style={{ display: "flex", flexDirection: "row", gap: "15px", alignItems: "center", justifyContent: "center" }}>
             Регион:
             <InputPicker
                 placement="auto"
@@ -52,7 +52,7 @@ export const MenuSearch = ({ set_name }) => {
 
             />
         </div>
-        <div style={{ color: "white" }}>
+        <div style={{ display: "flex", flexDirection: "row", gap: "15px", alignItems: "center", justifyContent: "center" }}>
             Город:
             <InputPicker
                 placement="auto"
@@ -68,7 +68,7 @@ export const MenuSearch = ({ set_name }) => {
 
             />
         </div>
-        <div style={{ width: "150px" }}>
+        <div >
             <button
                 className={styles.Menu_filter_btn}
                 disabled={text == '' || Array.isArray(text) ? true : false}

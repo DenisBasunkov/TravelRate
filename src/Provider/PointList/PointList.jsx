@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom"
 import stiles from "./PointList.module.scss"
 import { useEffect, useRef, useState } from "react"
-import { Accordion, CheckPicker, Checkbox, CheckboxGroup, Divider, InputPicker, Loader, Pagination, Panel, Placeholder, Rate, Tabs } from "rsuite"
+import { Accordion, Button, CheckPicker, Checkbox, CheckboxGroup, Divider, Heading, HeadingGroup, InputPicker, Loader, Notification, Pagination, Panel, Placeholder, Rate, Tabs, Text } from "rsuite"
 import axios from "axios"
 import { Array_type, Get_all_point, NameBySubject, Scroll_to_info, SubjectOfDistrict } from "../../Scripts/Global"
 import { CardPoint } from "../../Components/Card_point/CardPoint"
@@ -31,6 +31,13 @@ export const PointList = () => {
 
     const [selectedFilter, setSelectedFilter] = useState([]);
     const [selectedFilterRating, setSelectedFilterRating] = useState([]);
+
+    const MyCity = sessionStorage.getItem("city")
+        ? JSON.parse(sessionStorage.getItem("city"))["name"]
+        : '';
+    const MyDistrict = sessionStorage.getItem("city")
+        ? JSON.parse(sessionStorage.getItem("city"))["subject"]
+        : '';
 
     useEffect(() => {
         const fetchData = async () => {
@@ -122,6 +129,7 @@ export const PointList = () => {
             setData(datas)
         }
     }
+
     useEffect(() => {
         if (typeof data !== 'string') {
             setLoading(true);
@@ -161,11 +169,8 @@ export const PointList = () => {
                 {
                     loading ? (
                         <div style={{
-                            // position: "absolute", 
-                            // top: "0", left: "0", 
                             width: "90%",
                             margin: "0 auto"
-                            // height: "100vh"
                         }} >
                             {/* <Placeholder.Paragraph graph="image" active rows={15} rowHeight={10} /> */}
                             <Placeholder.Paragraph graph="image" active
@@ -182,40 +187,68 @@ export const PointList = () => {
                         </div >
                     ) : (
                         typeof data === 'string' ? (
-                            null
+                            <div style={{
+                                width: "80%",
+                                margin: "15px auto",
+                                padding: "15px 0px",
+                            }} >
+
+                                <div style={{ display: "flex", margin: "0 auto", justifyContent: "center" }}>
+                                    {/* <Heading level={1}>Вы находитесь в: </Heading> */}
+                                    <Heading level={1}>Желаете посмотреть места в вашем районе:</Heading>
+                                    <button
+                                        className={stiles.btn_mySity}
+                                        onClick={() => {
+                                            get_Name({ CityName: MyCity, Subject: MyDistrict });
+                                            sessionStorage.setItem("search_point", JSON.stringify({ CityName: MyCity, Subject: MyDistrict }));
+                                            location.reload()
+                                        }}
+                                    ><Heading level={1}> {MyDistrict} - {MyCity}?</Heading>
+                                    </button>
+                                </div>
+
+                            </div>
                         ) : (
                             <div className={stiles.List_container}>
                                 <Panel className={stiles.Filter_list_container}>
-                                    <Accordion style={{ width: "100%" }}>
-                                        <Accordion.Panel header={<p style={{ width: "100%" }}>Категории</p>} bodyFill defaultExpanded>
-                                            <div style={{ textAlign: "left", display: "flex", flexDirection: "column" }}>
-                                                <CheckboxGroup>
-                                                    {
-                                                        Array_type().map((item, idx) => {
-                                                            var categories = JSON.parse(sessionStorage.getItem("point_category")).find(({ ID }) => ID === item.value)
-                                                            return <Checkbox
-                                                                key={idx}
-                                                                value={item.value}
-                                                                onChange={handleFilter}
-                                                                style={{ display: "flex", alignItems: "center", flexDirection: "row" }}
-                                                            ><p style={{ display: "flex", alignItems: "center", flexDirection: "row" }}><img src={categories.icon !== (null || "") ? (`api/${categories.icon}`) : '/Location.png'} width={25} /> {item.label}</p></Checkbox>
-                                                        })
-                                                    }
-                                                </CheckboxGroup>
-                                            </div>
-                                        </Accordion.Panel>
-                                        <Accordion.Panel header="Рейтинг">
-                                            <div style={{ textAlign: "left", display: "flex", flexDirection: "column" }} bodyFill>
-                                                {
-                                                    Rate_Array.map((item, ind) => {
-                                                        return <Checkbox key={ind} value={item.value} onChange={handleFilterRating}>{item.label}</Checkbox>
-                                                    })
-                                                }
-                                            </div>
-                                        </Accordion.Panel>
-                                    </Accordion>
+
+                                    <div style={{ textAlign: "left", display: "flex", flexDirection: "column" }}>
+                                        <Divider><Text muted>Категории</Text></Divider>
+                                        <CheckboxGroup style={{ width: "100%" }}>
+                                            {
+                                                Array_type().map((item, idx) => {
+                                                    var categories = JSON.parse(sessionStorage.getItem("point_category")).find(({ ID }) => ID === item.value)
+                                                    return <Checkbox
+                                                        key={idx}
+                                                        value={item.value}
+                                                        onChange={handleFilter}
+                                                        style={{ display: "flex", alignItems: "center", flexDirection: "row" }}
+                                                    ><p style={{ display: "flex", alignItems: "center", flexDirection: "row" }}><img src={categories.icon !== (null || "") ? (`api/${categories.icon}`) : '/Location.png'} width={25} /> {item.label}</p></Checkbox>
+                                                })
+                                            }
+                                        </CheckboxGroup>
+                                    </div>
+                                    <div style={{ textAlign: "left", display: "flex", flexDirection: "column" }} bodyFill>
+                                        <Divider><Text muted>Рейтинг</Text></Divider>
+                                        <CheckboxGroup>
+                                            <Checkbox value={0} onChange={handleFilterRating}><Rate size="xs" defaultValue={0} readOnly color="yellow" /></Checkbox>
+                                            {
+                                                Rate_Array.map((item, ind) => {
+                                                    return <Checkbox key={ind} value={item.value} onChange={handleFilterRating}>{item.label}</Checkbox>
+                                                })
+                                            }
+                                        </CheckboxGroup>
+                                    </div>
                                 </Panel>
-                                <Tabs defaultActiveKey="1" onSelect={() => { setTabLoader(true); setTimeout(() => { setTabLoader(false) }, 100) }}>
+                                <Tabs
+                                    appearance="subtle"
+                                    defaultActiveKey="1"
+                                    className={stiles.Tabs_container}
+                                    onSelect={() => {
+                                        setTabLoader(true);
+                                        setTimeout(() => { setTabLoader(false) }, 100)
+                                    }}
+                                >
                                     <Tabs.Tab eventKey="1" title="Список" icon={<PiListDashesBold size={"1.5em"} />}>
                                         {
                                             TabLoader ? <div>

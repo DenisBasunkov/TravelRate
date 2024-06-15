@@ -1,5 +1,5 @@
 import { useRef, useState } from "react"
-import { Button, IconButton, InlineEdit, Message, Modal, Panel, Progress, Text, toaster, useToaster } from "rsuite"
+import { AutoComplete, Button, IconButton, InlineEdit, Message, Modal, Panel, Progress, Text, toaster, useToaster } from "rsuite"
 import stiles from "./RenameForm.module.scss"
 import axios from "axios"
 
@@ -307,6 +307,24 @@ export const Rename_Security = ({ isOpen, setIsOpen, data, type }) => {
         }
     }
 
+    const suffixes = ['@gmail.com', '@mail.ru', '@yandex.ru', '@bk.ru'];
+    const [dataEmail, setDataEmail] = useState([]);
+
+    const handleChangeEmail = (value) => {
+        const at = value.match(/@[\S]*/);
+        const nextData = at
+            ? suffixes
+                .filter(item => item.indexOf(at[0]) >= 0)
+                .map(item => {
+                    return `${value}${item.replace(at[0], '')}`;
+                })
+            : suffixes.map(item => `${value}${item}`);
+
+        setDataEmail(nextData);
+    };
+
+
+
     const typeForm = (type) => {
         switch (type) {
             case "Email":
@@ -315,7 +333,8 @@ export const Rename_Security = ({ isOpen, setIsOpen, data, type }) => {
                     <Panel bordered>
                         <Text className={stiles.input_div}>
                             Введите электонную почту
-                            <input type="email" placeholder="e-Mail" required name={type} defaultValue={UserData} />
+                            <AutoComplete name={type} data={dataEmail} defaultValue={UserData} onChange={handleChangeEmail} placeholder="Email" required></AutoComplete>
+                            {/* <input type="email" placeholder="e-Mail" required name={type} defaultValue={UserData} /> */}
                         </Text>
                     </Panel>
                 </div>

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { RiHeartLine, RiHeartFill } from "react-icons/ri";
 import { IconButton, Message, useToaster } from "rsuite";
 import { AuthContext } from "../../Scripts/AuthContext";
@@ -30,6 +30,10 @@ export const Favorite_button = ({ data }) => {
 
     const [isAuthUser, setIsAuthUser] = useState(false)
 
+    useEffect(() => {
+        setList(getFavoriteList())
+        setIsFavorite(list.find((item) => item.Point === data.ID) !== undefined)
+    }, [])
 
     window.addEventListener("unload", () => {
         Users()

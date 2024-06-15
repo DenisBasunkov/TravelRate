@@ -28,16 +28,17 @@ export const ListPoint = ({ arr, currentPage, setCurrentPage }) => {
                     )}
                 </div>
                 {
-                    postPerPage >= arr.length ? <Divider>
-                        <button className={stiles.ButtonPagination} onClick={() => { setPostPerPage(9); StartList.current.scrollIntoView({ behavior: 'smooth' }); }}>Вернуть назад</button>
-                    </Divider>
-                        : <Divider>
-                            <button className={stiles.ButtonPagination} onClick={() => { setPostPerPage(postPerPage + 9) }}>Далее</button>
-                            {
-                                postPerPage <= 9 ? null :
-                                    <button className={stiles.ButtonPagination} onClick={() => { setPostPerPage(postPerPage - 9) }}>Назад</button>
-                            }
+                    postPerPage < 9 ? null :
+                        postPerPage >= arr.length ? <Divider>
+                            <button className={stiles.ButtonPagination} onClick={() => { setPostPerPage(9); StartList.current.scrollIntoView({ behavior: 'smooth' }); }}>Вернуть назад</button>
                         </Divider>
+                            : <Divider>
+                                <button className={stiles.ButtonPagination} onClick={() => { setPostPerPage(postPerPage + 9) }}>Далее</button>
+                                {
+                                    postPerPage <= 9 ? null :
+                                        <button className={stiles.ButtonPagination} onClick={() => { setPostPerPage(postPerPage - 9) }}>Назад</button>
+                                }
+                            </Divider>
                 }
 
                 {/* <Pagination

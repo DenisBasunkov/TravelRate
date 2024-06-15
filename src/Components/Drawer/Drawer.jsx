@@ -35,7 +35,7 @@ export const Drawers = ({ isOpen, setIsOpen }) => {
     return <Drawer open={isOpen} onClose={() => setIsOpen(false)} backdrop="static" size={"xs"}>
         <Drawer.Body>
             <div className={styles.User_info}>
-                <Avatar src={`/api${data.Foto}`} size="xxl" circle />
+                <Avatar src={`/api${data.Foto}`} style={{ outline: "5px solid #0087D1", outlineOffset: "5px" }} size="xxl" circle />
                 <h1>{data.User_name}</h1>
             </div>
             <Divider></Divider>
