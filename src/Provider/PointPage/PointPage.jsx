@@ -261,7 +261,7 @@ const AddTag = ({ isOpen, setIsOpen, pointId }) => {
 
     const [addTagtype, setAddTagtype] = useState("new")
 
-    const ID = JSON.parse(sessionStorage.getItem("user") || localStorage.getItem("user"))["User_KEY"]
+    const ID = JSON.parse(sessionStorage.getItem("user") || localStorage.getItem("user"))
 
     const dataTags = JSON.parse(sessionStorage.getItem("all_tag")).map(({ Tag_Name, ID }) => ({ label: Tag_Name, value: ID }))
 
@@ -282,7 +282,7 @@ const AddTag = ({ isOpen, setIsOpen, pointId }) => {
         const datas = new FormData(RefForm.current)
         if (datas.get("Tagname") != (null || '')) {
             datas.append("ID", pointId)
-            datas.append("IDUser", ID)
+            datas.append("IDUser", ID.User_KEY)
             datas.append("typeTag", addTagtype)
             const { data } = await axios({
                 method: "put",

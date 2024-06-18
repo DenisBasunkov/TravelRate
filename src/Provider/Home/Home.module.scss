@@ -45,3 +45,19 @@
     }
 
 }
+
+.button_read {
+    border: 2px solid #fff;
+    color: #fff;
+    background-color: transparent;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all .5s;
+    transform: scale(1);
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}

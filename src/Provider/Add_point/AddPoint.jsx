@@ -443,10 +443,10 @@ const Additional_Information = ({ onNext, onPrevious, Description_point, setDesc
 const Finale = ({ onPrevious, SubmitePoint }) => {
     return <>
         <h1>
-            Пожалуйста, введите основную информацию, которая наилучшим образом описывает ваше туристическое место. Это поможет другим пользователям легко найти его.
+            Внимание! В данной версии сайта нет возможности вернуться к предыдущим этам. Для настройки места обращайтесь в поддержку. Приносим свои извинения.
         </h1>
         <div style={{ margin: "15px auto" }}>
-            <Button onClick={SubmitePoint}>Сохранить место</Button>
+            <Button style={{ backgroundColor: "#3498FF", color: "#fff" }} onClick={SubmitePoint}>Сохранить место</Button>
         </div>
         {/* <Button appearance="primary" style={{ float: "left" }} startIcon={<BsChevronCompactLeft />} onClick={onPrevious}>Назад</Button> */}
     </>
